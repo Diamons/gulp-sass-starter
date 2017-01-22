@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     notify = require('gulp-notify'),
     browserSync = require('browser-sync').create(),
+    fileinclude = require('gulp-file-include'),
     appDefaults = {
       stylesDir : "styles/" // path to styles
     }
@@ -32,15 +33,26 @@ gulp.task('styles', function() {
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
+gulp.task('fileinclude', function() {
+  gulp.src(['./src/*.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./'))
+    .pipe(browserSync.stream());
+});
 
 // Watch
-gulp.task('watch', function() {
+gulp.task('watch', ['fileinclude'], function() {
   browserSync.init({
     server: "./"
   });
   // Watch .scss files
   gulp.watch(appDefaults.stylesDir+'**/*.scss', ['styles']);
-  gulp.watch('./*.html').on('change', browserSync.reload);
+  gulp.watch(['./src/**/*.html'], ['fileinclude']);
+  gulp.watch(['./*.js']).on('change', browserSync.reload);
+
 });
 
 

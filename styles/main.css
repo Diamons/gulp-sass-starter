@@ -1,5 +1,64 @@
-body {
-  background: blue; }
+.bloomsbury-shop__content {
+  font-family: "NewtextITCStd-Regular";
+  color: black;
+  font-variant: small-caps;
+  letter-spacing: 2px;
+  padding-bottom: 2px;
+  font-weight: normal;
+  text-rendering: auto; }
 
-html {
-  padding: 40px 20px; }
+html,
+body {
+  padding: 0;
+  margin: 0; }
+
+.bloomsbury-shop {
+  position: relative; }
+  .bloomsbury-shop__button {
+    background: #FFFFFF; }
+  .bloomsbury-shop__pages, .bloomsbury-shop__landing {
+    position: relative; }
+  .bloomsbury-shop__content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    padding-top: 150px;
+    padding-bottom: 350px;
+    width: 385px;
+    max-width: 90%;
+    margin: auto;
+    text-align: center; }
+  .bloomsbury-shop__content-title {
+    font-size: 48px; }
+  .bloomsbury-shop__image {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .bloomsbury-shop__button {
+    font-family: "Helvetica", "Arial", "Lucida Grande", sans-serif;
+    text-transform: uppercase; }
+  .bloomsbury-shop__landing {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    z-index: 2; }
+  .bloomsbury-shop__landing .bloomsbury-shop__content-wrap {
+    border: 1px solid #FFFFFF; }
+  .bloomsbury-shop__pages {
+    position: relative;
+    z-index: 1; }
+  .bloomsbury-shop__page--story {
+    border-style: solid;
+    border-width: 120px 108px 114px;
+    border-image: url(../img/border/story.png) 120 108 114 fill round round; }
+  .bloomsbury-shop__content-copy {
+    font-size: 16px;
+    font-family: "Helvetica", "Arial", "Lucida Grande", sans-serif; }
+
+.hidden {
+  display: none; }

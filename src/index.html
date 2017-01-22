@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gulp Sass Starter</title>
+	<link rel="stylesheet" href="styles/main.min.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://rawgit.com/flatiron/director/master/build/director.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="js-bloomsbury-shop bloomsbury-shop">
+    <div class="js-bloomsbury-shop-landing bloomsbury-shop__landing">
+      <div class="bloomsbury-shop__content">
+        <div class="bloomsbury-shop__content-wrap">
+          <div class="bloomsbury-shop__content-title">
+            The Bloomsbury Set
+          </div>
+          <a class="bloomsbury-shop__button" href="#/story">
+            Discover
+          </a>
+        </div>
+      </div>
+      <img class="bloomsbury-shop__image" src="img/mobile/test1.jpg" />
+    </div>
+    <div class="bloomsbury-shop__pages">
+
+      <!-- Generated list of titles / pages -->
+      <div class="js-bloomsbury-shop-nav"></div>
+
+      @@include('./include/story.html')
+
+      @@include('./include/scents.html')
+
+      @@include('./include/inspiration.html')
+
+    </div>
+  </div>
+</body>
+</html>
