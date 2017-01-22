@@ -37,9 +37,9 @@ gulp.task('styles', function() {
 gulp.task('watch', function() {
   browserSync.init({
     server: "./"
-  })
+  });
   // Watch .scss files
-  gulp.watch(appDefaults.stylesDir+'**/*.scss', ['sass']);
+  gulp.watch(appDefaults.stylesDir+'**/*.scss', ['styles']);
   gulp.watch('./*.html').on('change', browserSync.reload);
 });
 
