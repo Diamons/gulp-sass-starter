@@ -6,36 +6,29 @@ $(function() {
 
   $pages.each(function() {
     var title = $(this).data('title');
-    var key = '#/' + $(this).data('key');
-    $nav.append('<a href="' + key + '">' + title + '</a>');
+    var key = $(this).data('key');
+    $nav.append('<a href="#/' + key + '" data-key="' + key + '"><span>' + title + '</span></a>');
   });
 
   var routeActions = {
     init: function() {
-      $landing.slideUp();
-      $pages.slideUp();
-    },
-    story: function() {
-      this.init();
-      $pages.filter('[data-key="story"]').slideDown();
-    },
-    scents: function() {
-      this.init();
-    },
-    gallery: function() {
-      this.init();
-    },
+      $landing.fadeOut();
+      $pages.fadeOut();
+      $pages.filter('[data-key="'+ router.getRoute() +'"]').fadeIn();
+      $nav.find('a').removeClass('active');
+      $nav.find('a[data-key="'+ router.getRoute() +'"]').addClass('active');
+    }
   };
 
   var routes = {
     '/story': function() {
-      routeActions.story();
+      routeActions.init();
     },
     '/scents': function() {
-      routeActions.scents();
+      routeActions.init();
     },
-    '/gallery/:num': function() {
-      routeActions.gallery();
+    '/inspiration': function() {
+      routeActions.init();
     }
   };
 
@@ -43,4 +36,17 @@ $(function() {
 
   router.init();
 
+  $('.slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    dots: true,
+    infinite: true,
+    cssEase: 'linear'
+  });
+
+  $('.js-bloomsbury-shop-open').on('click', function(event) {
+    event.preventDefault();
+    $(this).parents('.js-bloomsbury-slider').slick();
+  });
 })
