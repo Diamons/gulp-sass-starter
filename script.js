@@ -36,15 +36,6 @@ $(function() {
 
   router.init();
 
-  $('.slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerMode: true,
-    dots: true,
-    infinite: true,
-    cssEase: 'linear'
-  });
-
   $('.js-bloomsbury-shop-open').on('click', function(event) {
     event.preventDefault();
     $(this).parents('.js-bloomsbury-slider').slick();

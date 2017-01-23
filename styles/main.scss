@@ -9,7 +9,9 @@ $body-font: "Helvetica" , "Arial", "Lucida Grande", sans-serif;
   font-weight: normal;
   text-rendering: auto;
 }
-
+* {
+  box-sizing: border-box;
+}
 html,
 body {
   padding: 0;
@@ -131,12 +133,13 @@ body {
   }
   &__page--story {
     .bloomsbury-shop__content {
-      padding: 140px 100px;
+      padding: 100px 40px;
       margin: auto;
       background: url('../img/border/story.png') no-repeat;
       background-size: 100% 100%;
       background-position: center;
       width: 800px;
+      max-width: 99%;
       margin: auto;
     }
     .bloomsbury-shop__content-wrap {
