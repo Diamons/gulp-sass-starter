@@ -7,13 +7,14 @@ $(function() {
   $pages.each(function() {
     var title = $(this).data('title');
     var key = $(this).data('key');
-    $nav.append('<a href="#/' + key + '" data-key="' + key + '"><span>' + title + '</span></a>');
+    $nav.append('<a class="' + key + '" href="#/' + key + '" data-key="' + key + '"><span>' + title + '</span></a>');
   });
 
   var routeActions = {
     init: function() {
-      $landing.fadeOut();
-      $pages.fadeOut();
+      $('.js-bloomsbury-slider.slick-initialized', $module).slick('destroy');
+      $landing.hide();
+      $pages.hide();
       $pages.filter('[data-key="'+ router.getRoute() +'"]').fadeIn();
       $nav.find('a').removeClass('active');
       $nav.find('a[data-key="'+ router.getRoute() +'"]').addClass('active');
@@ -29,6 +30,7 @@ $(function() {
     },
     '/inspiration': function() {
       routeActions.init();
+      $('.js-bloomsbury-slider').slick();
     }
   };
 
@@ -38,6 +40,8 @@ $(function() {
 
   $('.js-bloomsbury-shop-open').on('click', function(event) {
     event.preventDefault();
+    var index = $(this).parent().index();
     $(this).parents('.js-bloomsbury-slider').slick();
+    $(this).parents('.js-bloomsbury-slider').slick('slickGoTo', index);
   });
 })

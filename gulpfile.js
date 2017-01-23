@@ -29,8 +29,8 @@ gulp.task('styles', function() {
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
     .pipe(gulp.dest(appDefaults.stylesDir))
-    .pipe(browserSync.stream())
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(browserSync.stream());
+    // .pipe(notify({ message: 'Styles task complete' }));
 });
 
 gulp.task('fileinclude', function() {

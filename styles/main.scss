@@ -22,6 +22,7 @@ body {
   position: relative;
   background: url('../img/bloomsbury-wallpaper.jpg');
   background-size: 100% auto;
+  height: 990px;
   &__button {
     display: inline-block;
     background: #FFFFFF;
@@ -97,7 +98,7 @@ body {
   // Nav
   //
   &__nav {
-    padding: 25px 0;
+    padding: 20px 0 10px;
     text-align: center;
     a {
       @extend %header;
@@ -105,13 +106,18 @@ body {
       font-weight: normal;
       text-decoration: none;
       padding: 0 60px;
-      border-right: 1px solid black;
       transition: all .3s;
-      &:last-child {
-        border-right: none;
-      }
       &:hover {
         color: lighten(#000000, 50%);
+      }
+      &.active.story {
+        color: #325283;
+      }
+      &.active.scents {
+        color: #bf5a29;
+      }
+      &.active.inspiration {
+        color: #e39a14;
       }
       &.active span {
         border-bottom: 1px solid black;
@@ -126,20 +132,20 @@ body {
     position: relative;
     z-index: 1;
   }
-
   &__page {
     display: none;
     padding: 0 0 40px;
   }
   &__page--story {
     .bloomsbury-shop__content {
-      padding: 100px 40px;
+      padding: 135px 40px 20px;
       margin: auto;
       background: url('../img/border/story.png') no-repeat;
       background-size: 100% 100%;
       background-position: center;
       width: 800px;
       max-width: 99%;
+      min-height: 890px;
       margin: auto;
     }
     .bloomsbury-shop__content-wrap {
@@ -159,7 +165,7 @@ body {
       font-size: 16px;
       margin-bottom: 10px;
       padding: 12px 0;
-      width: 200px;
+      width: 210px;
     }
     .bloomsbury-shop__button--scents {
       background: #385688;
@@ -175,7 +181,21 @@ body {
       border: 1px solid #385688;
       color: #385688;
       &:hover {
+        background: darken(#FFF, 0%);
         color: darken(#385688, 10%);
+      }
+    }
+  }
+  &__page--inspiration {
+    .bloomsbury-shop__slider {
+      max-width: 90%;
+      margin: auto;
+      .slick-slide:focus {
+        outline: none;
+      }
+      .slick-slide img {
+        width: 800px;
+        margin: auto;
       }
     }
   }
@@ -185,11 +205,14 @@ body {
     font-family: $body-font;
   }
 
-  // Grid of products
+  // The scents and product info
   &__products {
+    padding-top: 150px;
+    padding-bottom: 100px;
     width: 90%;
     margin: auto;
     text-align: center;
+    font-size: 0;
     &-item {
       display: inline-block;
       width: 210px;
@@ -200,9 +223,32 @@ body {
       margin: auto;
       max-width: 100%;
     }
+    &-title {
+      @extend %header;
+      font-size: 20px;
+      margin: 50px auto 15px;
+      max-width: 180px;
+    }
+    &-description {
+      letter-spacing: 1px;
+      line-height: 1.5em;
+      width: 600px;
+      max-width: 90%;
+      margin: auto;
+    }
+    &-price {
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 30px 0;;
+    }
+    .bloomsbury-shop__button {
+      background: transparent;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
   }
 
-  // Swap these display values when switching to active carousel
+  // Hide these display values unless on the carousel
   &__products-name,
   &__products-content {
     display: none;
@@ -233,6 +279,104 @@ body {
     }
     img {
       margin: auto;
+    }
+  }
+
+
+
+  // Bloomsbury Product / Scents Themes
+  .theme--whiskey-cedarwood {
+    .bloomsbury-shop__products-title,
+    .bloomsbury-shop__products-description,
+    .bloomsbury-shop__products-price {
+      color: #ac3b2d;
+    }
+    .bloomsbury-shop__button {
+      font-weight: 300;
+      background: transparent;
+      border: 1px solid #ac3b2d;
+      color: #ac3b2d;
+      &:hover,
+      &.bloomsbury-shop__button--add-bag {
+        background: #ac3b2d;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .theme--blue-hyacinth {
+    .bloomsbury-shop__products-title,
+    .bloomsbury-shop__products-description,
+    .bloomsbury-shop__products-price {
+      color: #857a8b;
+    }
+    .bloomsbury-shop__button {
+      font-weight: 300;
+      background: transparent;
+      border: 1px solid #857a8b;
+      color: #857a8b;
+      &:hover,
+      &.bloomsbury-shop__button--add-bag {
+        background: #857a8b;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .theme--tobacco-mandarin {
+    .bloomsbury-shop__products-title,
+    .bloomsbury-shop__products-description,
+    .bloomsbury-shop__products-price {
+      color: #513531;
+    }
+    .bloomsbury-shop__button {
+      font-weight: 300;
+      background: transparent;
+      border: 1px solid #513531;
+      color: #513531;
+      &:hover,
+      &.bloomsbury-shop__button--add-bag {
+        background: #513531;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .theme--leather-artemisia {
+    .bloomsbury-shop__products-title,
+    .bloomsbury-shop__products-description,
+    .bloomsbury-shop__products-price {
+      color: #746b5d;
+    }
+    .bloomsbury-shop__button {
+      font-weight: 300;
+      background: transparent;
+      border: 1px solid #746b5d;
+      color: #746b5d;
+      &:hover,
+      &.bloomsbury-shop__button--add-bag {
+        background: #746b5d;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .theme--garden-lillies {
+    .bloomsbury-shop__products-title,
+    .bloomsbury-shop__products-description,
+    .bloomsbury-shop__products-price {
+      color: #223e63;
+    }
+    .bloomsbury-shop__button {
+      font-weight: 300;
+      background: transparent;
+      border: 1px solid #223e63;
+      color: #223e63;
+      &:hover,
+      &.bloomsbury-shop__button--add-bag {
+        background: #223e63;
+        color: #FFFFFF;
+      }
     }
   }
 }
