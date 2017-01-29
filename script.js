@@ -17,6 +17,10 @@ var Drupal = {
       var $pages = $('.bloomsbury-shop__pages-wrap', $module);
       var $singlePages = $('.js-bloomsbury-shop-page', $module);
 
+      var slickSettings = {
+        speed: animationTime
+      };
+
       function updateResponsive() {
         // $module.height(window.innerHeight - $('#top').outerHeight());
       }
@@ -33,19 +37,20 @@ var Drupal = {
 
       var routeActions = {
         init: function(cb) {
-          $module.removeClass('landing');
-          $landing.fadeOut(animationTime);
-          $pages.fadeOut(animationTime, function() {
-            $singlePages.hide();
-            $singlePages.filter('[data-key="'+ router.getRoute() +'"]').show();
-            $nav.find('a').removeClass('active');
-            $nav.find('a[data-key="'+ router.getRoute() +'"]').addClass('active');
-            setTimeout(function() {
-              $pages.fadeIn(animationTime);
-              if (cb) {
-                cb();
-              }
-            }, 200);
+          $landing.fadeOut(animationTime, function() {
+            $module.removeClass('landing');
+            $pages.fadeOut(animationTime, function() {
+              $singlePages.hide();
+              $singlePages.filter('[data-key="'+ router.getRoute() +'"]').show();
+              $nav.find('a').removeClass('active');
+              $nav.find('a[data-key="'+ router.getRoute()[0] +'"]').addClass('active');
+              setTimeout(function() {
+                $pages.fadeIn(animationTime);
+                if (cb) {
+                  cb();
+                }
+              }, 200);
+            });
           });
         }
       };
@@ -55,15 +60,19 @@ var Drupal = {
           routeActions.init();
         },
         '/scents': function() {
-          routeActions.init();
           $('.bloomsbury-shop__page--scents .js-bloomsbury-slider.slick-initialized', $module).slick('unslick');
+          $('.bloomsbury-shop__products-item', $module).show();
+          routeActions.init();
+        },
+        '/scents/:number': function(number) {
+          routeActions.init(function() {
+            transitionToScent(number);
+          });
         },
         '/inspiration': function() {
           routeActions.init(function() {
             setTimeout(function() {
-              $('.bloomsbury-shop__page--inspiration .js-bloomsbury-slider', $module).slick({
-                speed: animationTime
-              });
+              $('.bloomsbury-shop__page--inspiration .js-bloomsbury-slider', $module).slick(slickSettings);
             }, 100);
           });
         }
@@ -76,20 +85,31 @@ var Drupal = {
       $(document).on('click', '.js-bloomsbury-shop-open', function(event) {
         event.preventDefault();
         var index = $(this).parents('.bloomsbury-shop__products-item').index();
+        if (index < 0) {
+          index = 0;
+        }
         $('.bloomsbury-shop__products-item:not(:eq('+index+'))', $module).fadeOut(animationTime, function() {
-          $('.bloomsbury-shop__products-item', $module).attr('style', '');
-          // $module.find('.bloomsbury-shop__page--scents .js-bloomsbury-slider').css({opacity: 0}).animate({
-          //   opacity: 1,
-          // }, animationTime, function() {
-            setTimeout(function() {
-              $module.find('.bloomsbury-shop__page--scents .js-bloomsbury-slider:not(.slick-initialized)').slick({
-                speed: animationTime
-              });
-              $module.find('.bloomsbury-shop__page--scents .js-bloomsbury-slider').slick('slickGoTo', index, true);
-            }, 100);
-          // });
+          transitionToScent(index);
         });
       });
+
+      function transitionToScent(index) {
+          setTimeout(function() {
+            var $scentsCarousel = $module.find('.bloomsbury-shop__page--scents .js-bloomsbury-slider:not(.slick-initialized)');
+            $scentsCarousel.slick(slickSettings);
+            // Arrow themes
+            $scentsCarousel.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+              var currentClass = $scentsCarousel.find('.slick-slide:not(.slick-cloned)').eq(currentSlide).data('theme');
+              var nextClass = $scentsCarousel.find('.slick-slide:not(.slick-cloned)').eq(nextSlide).data('theme');
+              $scentsCarousel.removeClass(currentClass).addClass(nextClass);
+            });
+            $('.bloomsbury-shop__products-item', $module).fadeIn(animationTime, function() {
+              $module.find('.bloomsbury-shop__page--scents .js-bloomsbury-slider').slick('slickGoTo', index, true);
+              $('.bloomsbury-shop__page--scents', $module).fadeIn(animationTime);
+            });
+          // }, 1);
+        });
+      }
     }
   };
 })(jQuery);

@@ -10,6 +10,13 @@ html, body {
   width: 100%; }
 
 @font-face {
+  font-family: 'bloomsbury-arrow';
+  src: url("/media/export/cms/bloomsbury_digital/fonts/icomoon.eot?fzapve");
+  src: url("/media/export/cms/bloomsbury_digital/fonts/icomoon.eot?fzapve#iefix") format("embedded-opentype"), url("/media/export/cms/bloomsbury_digital/fonts/icomoon.ttf?fzapve") format("truetype"), url("/media/export/cms/bloomsbury_digital/fonts/icomoon.woff?fzapve") format("woff"), url("/media/export/cms/bloomsbury_digital/fonts/icomoon.svg?fzapve#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
   font-family: 'AW Conqueror Didot Light';
   src: url("/media/export/cms/bloomsbury_digital/fonts/AWConquerorDidot-Light.eot");
   /* IE9 Compat Modes */
@@ -177,7 +184,6 @@ html, body {
   top: 50%;
   left: -0;
   transform: translateY(-50%);
-  background: url("/media/export/cms/bloomsbury_digital/images/arrow.png") no-repeat;
   font-size: 0;
   border: none;
   width: 50px;
@@ -190,8 +196,7 @@ html, body {
 
 .bloomsbury-shop__page .slick-next {
   left: auto;
-  right: 0;
-  transform: translateY(-50%) scale(-1, -1); }
+  right: 0; }
 
 @media (min-width: 768px) {
   .bloomsbury-shop__page .slick-prev {
@@ -407,28 +412,31 @@ html, body {
 .bloomsbury-shop__products-item.slick-slide img {
   margin: auto; }
 
-.bloomsbury-shop .theme--whiskey-cedarwood,
-.bloomsbury-shop .theme--blue-hyacinth,
-.bloomsbury-shop .theme--tobacco-mandarin,
-.bloomsbury-shop .theme--leather-artemisia,
-.bloomsbury-shop .theme--garden-lillies {
+.bloomsbury-shop .theme--whiskey-cedarwood .bloomsbury-shop__products-item__wrap,
+.bloomsbury-shop .theme--blue-hyacinth .bloomsbury-shop__products-item__wrap,
+.bloomsbury-shop .theme--tobacco-mandarin .bloomsbury-shop__products-item__wrap,
+.bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__products-item__wrap,
+.bloomsbury-shop .theme--garden-lillies .bloomsbury-shop__products-item__wrap {
   background: transparent;
-  transition: background .3s; }
+  background-repeat: no-repeat;
+  transition: background .3s;
+  background-size: 100% 100%;
+  background-position: center center; }
 
-.bloomsbury-shop .theme--whiskey-cedarwood.slick-slide {
-  background: url("/media/export/cms/bloomsbury_digital/images/whiskey-cedarwood.png") no-repeat; }
+.bloomsbury-shop .theme--whiskey-cedarwood.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/images/whiskey-cedarwood.png"); }
 
-.bloomsbury-shop .theme--blue-hyacinth.slick-slide {
-  background: url("/media/export/cms/bloomsbury_digital/images/blue-hyacinth.png") no-repeat; }
+.bloomsbury-shop .theme--blue-hyacinth.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/images/blue-hyacinth.png"); }
 
-.bloomsbury-shop .theme--tobacco-mandarin.slick-slide {
-  background: url("/media/export/cms/bloomsbury_digital/images/tobacco-mandarin.png") no-repeat; }
+.bloomsbury-shop .theme--tobacco-mandarin.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/images/tobacco-mandarin.png"); }
 
-.bloomsbury-shop .theme--leather-artemisia.slick-slide {
-  background: url("/media/export/cms/bloomsbury_digital/images/leather-artemisia.png") no-repeat; }
+.bloomsbury-shop .theme--leather-artemisia.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/images/leather-artemisia.png"); }
 
-.bloomsbury-shop .theme--garden-lillies.slick-slide {
-  background: url("/media/export/cms/bloomsbury_digital/images/garden-lillies.png") no-repeat; }
+.bloomsbury-shop .theme--garden-lillies.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/images/garden-lillies.png"); }
 
 .bloomsbury-shop .theme--whiskey-cedarwood .bloomsbury-shop__products-title,
 .bloomsbury-shop .theme--whiskey-cedarwood .bloomsbury-shop__products-name,
@@ -526,6 +534,27 @@ html, body {
   background-position: center center;
   background-size: cover;
   min-height: 480px; }
+  .bloomsbury-shop .slick-next,
+  .bloomsbury-shop .slick-prev {
+    width: auto;
+    height: auto;
+    background: transparent;
+    z-index: 20; }
+    .bloomsbury-shop .slick-next:before,
+    .bloomsbury-shop .slick-prev:before {
+      transform: none;
+      font-family: 'bloomsbury-arrow' !important;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 53px; }
+  .bloomsbury-shop .slick-next:before {
+    content: "\e901"; }
+  .bloomsbury-shop .slick-prev {
+    transform: none; }
+    .bloomsbury-shop .slick-prev:before {
+      content: "\e900"; }
   @media (min-width: 640px) {
     .bloomsbury-shop .mobile-only {
       display: none; } }
@@ -566,9 +595,19 @@ html, body {
   .bloomsbury-shop__landing .bloomsbury-shop__button {
     padding: 10px 42px; }
 
+.bloomsbury-shop__page--story .slick-prev {
+  left: 32px;
+  top: 145px; }
+
+.bloomsbury-shop__page--story .slick-next {
+  top: 175px; }
+
 .bloomsbury-shop__page--story .bloomsbury-shop__content {
   padding: 0;
   margin: -5px auto 0; }
+
+.bloomsbury-shop__page--story .bloomsbury-shop__button--inspiration {
+  padding: 8px 10px; }
 
 .bloomsbury-shop__page--story .bloomsbury-shop__content-copy {
   padding: 0 10px;
@@ -594,6 +633,20 @@ html, body {
 
 .bloomsbury-shop__page--story .bloomsbury-shop__button--inspiration {
   margin-bottom: 55px; }
+
+.bloomsbury-shop__page--scents .slick-slider {
+  width: 500px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: -10px; }
+
+.bloomsbury-shop__page--scents .slick-prev {
+  top: 145px;
+  left: 32px; }
+
+.bloomsbury-shop__page--scents .slick-next {
+  right: 27px;
+  top: 174px; }
 
 .bloomsbury-shop__page--scents .bloomsbury-shop__products {
   padding: 0; }
@@ -625,19 +678,29 @@ html, body {
     width: 800px;
     max-width: 99%;
     margin: auto;
-    margin-top: -20px; }
+    height: auto; }
 
 .bloomsbury-shop__page--scents .slick-slide img {
   max-width: 34px; }
 
-.bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__products-item__wrap {
-  padding: 60px 45px 0; }
+.bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__products-item {
+  height: auto; }
 
-.bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__products-name {
+.bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__products-item__wrap {
+  padding: 50px 45px 0; }
+
+.bloomsbury-shop__page--scents .slick-slide 1
+.bloomsbury-shop__products-name {
   font-size: 22px;
   line-height: 24px;
   letter-spacing: 2px;
-  padding: 0; }
+  padding: 0;
+  width: 70%;
+  margin: auto; }
+
+.bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__products-name {
+  max-width: 65%;
+  margin: auto; }
 
 .bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__products-description {
   font-size: 10px;
@@ -647,6 +710,51 @@ html, body {
   margin-top: 16px; }
 
 .bloomsbury-shop__page--scents .slick-slide .bloomsbury-shop__button.bloomsbury-shop__button--add-bag {
-  padding: 9px 36px;
-  margin: 2px auto 0;
+  padding: 8px 35px;
+  margin: 2px auto 58px;
   font-size: 13px; }
+
+.bloomsbury-shop__page--scents .bloomsbury-shop .theme--whiskey-cedarwood.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/borders/whiskey-cedarwood-mobile.png"); }
+
+.bloomsbury-shop__page--scents .theme--blue-hyacinth.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/borders/blue-hyacinth-mobile.png"); }
+
+.bloomsbury-shop__page--scents .theme--tobacco-mandarin.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/borders/tobacco-mandarin-mobile.png"); }
+
+.bloomsbury-shop__page--scents .theme--leather-artemisia.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/borders/leather-artemisia-mobile.png"); }
+
+.bloomsbury-shop__page--scents .theme--garden-lillies.slick-slide .bloomsbury-shop__products-item__wrap {
+  background-image: url("/media/export/cms/bloomsbury_digital/borders/garden-lillies-mobile.png"); }
+
+.theme--whiskey-cedarwood .slick-arrow {
+  color: #ac3b2d; }
+
+.theme--blue-hyacinth .slick-arrow {
+  color: #998da0; }
+
+.theme--tobacco-mandarin .slick-arrow {
+  color: #6d4640; }
+
+.theme--leather-artemisia .slick-arrow {
+  color: #a39681; }
+
+.theme--garden-lillies .slick-arrow {
+  color: #3d537a; }
+
+.bloomsbury-shop__page--inspiration .slick-slider {
+  position: relative; }
+
+.bloomsbury-shop__page--inspiration .slick-slide {
+  height: auto; }
+
+.bloomsbury-shop__page--inspiration .slick-next,
+.bloomsbury-shop__page--inspiration .slick-prev {
+  top: 50%;
+  transform: translateY(-50%);
+  color: #FFFFFF; }
+
+.bloomsbury-shop__page--inspiration .slick-next {
+  right: 0; }
