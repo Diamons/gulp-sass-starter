@@ -16,7 +16,7 @@
   background-position: center center;
   background-size: cover;
   min-height: 480px;
-  transition: all .3s;
+  transition: background .7s ease-out;
   .slick-next,
   .slick-prev {
     width: auto;
@@ -287,6 +287,9 @@
     @include breakpoint($tablet) {
       width: 768px;
     }
+    @include breakpoint($extra-large) {
+      width: 880px;
+    }
   }
   .slick-prev {
     top: 145px;
@@ -297,11 +300,11 @@
       transform: translateY(-50%);
     }
     @include breakpoint($large) {
-      left: 222px;
+      left: -100px;
       margin-top: -5px;
     }
     @include breakpoint($extra-large) {
-      left: 298px;
+      left: -100px;
       &:before {
         font-size: 78px;
       }
@@ -316,11 +319,11 @@
       transform: translateY(-50%);
     }
     @include breakpoint($large) {
-      right: 222px;
+      right: -100px;
       margin-top: -5px;
     }
     @include breakpoint($extra-large) {
-      right: 301px;
+      right: -100px;
       &:before {
         font-size: 78px;
       }

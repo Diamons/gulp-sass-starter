@@ -63,7 +63,7 @@ var Drupal = {
         },
         '/scents': function() {
           $('.bloomsbury-shop__page--scents .js-bloomsbury-slider.slick-initialized', $module).slick('unslick');
-          $('.bloomsbury-shop__products-item', $module).show();
+          $('.bloomsbury-shop__products-item', $module).show().css({opacity: 1});
           routeActions.init();
         },
         '/scents/:number': function(number) {
@@ -73,8 +73,9 @@ var Drupal = {
         },
         '/inspiration': function() {
           routeActions.init(function() {
+            $('.bloomsbury-shop__page--inspiration .js-bloomsbury-slider.slick-initialized', $module).slick('resize');
             setTimeout(function() {
-              $('.bloomsbury-shop__page--inspiration .js-bloomsbury-slider', $module).slick(slickSettings);
+              $('.bloomsbury-shop__page--inspiration .js-bloomsbury-slider:not(.slick-initialized)', $module).slick(slickSettings);
             }, 100);
           });
         }

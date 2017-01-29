@@ -533,7 +533,7 @@ html, body {
   background-position: center center;
   background-size: cover;
   min-height: 480px;
-  transition: all .3s; }
+  transition: background .7s ease-out; }
   .bloomsbury-shop .slick-next,
   .bloomsbury-shop .slick-prev {
     width: auto;
@@ -773,6 +773,9 @@ html, body {
   @media (min-width: 768px) {
     .bloomsbury-shop__page--scents .slick-slider {
       width: 768px; } }
+  @media (min-width: 1600px) {
+    .bloomsbury-shop__page--scents .slick-slider {
+      width: 880px; } }
 
 .bloomsbury-shop__page--scents .slick-prev {
   top: 145px;
@@ -784,11 +787,11 @@ html, body {
       transform: translateY(-50%); } }
   @media (min-width: 1280px) {
     .bloomsbury-shop__page--scents .slick-prev {
-      left: 222px;
+      left: -100px;
       margin-top: -5px; } }
   @media (min-width: 1600px) {
     .bloomsbury-shop__page--scents .slick-prev {
-      left: 298px; }
+      left: -100px; }
       .bloomsbury-shop__page--scents .slick-prev:before {
         font-size: 78px; } }
 
@@ -802,11 +805,11 @@ html, body {
       transform: translateY(-50%); } }
   @media (min-width: 1280px) {
     .bloomsbury-shop__page--scents .slick-next {
-      right: 222px;
+      right: -100px;
       margin-top: -5px; } }
   @media (min-width: 1600px) {
     .bloomsbury-shop__page--scents .slick-next {
-      right: 301px; }
+      right: -100px; }
       .bloomsbury-shop__page--scents .slick-next:before {
         font-size: 78px; } }
 
