@@ -1,15 +1,21 @@
 // @TODO -- REMOVE ME
-#top {
+@import "breakpoint";
+.test #top {
   height: 78px;
   background: brown;
   width: 100%;
   position: relative;
   z-index: 20;
+  @media (min-width:768px) {
+    height: 128px;
+  }
 }
 html,body {
   margin: 0;
   width: 100%;
 }
+
+$tablet: 768px;
 // END TODO
 
 @font-face {
@@ -63,7 +69,8 @@ $header-font: "AW Conqueror Didot Light";
 .bloomsbury-shop {
   background: url("/media/export/cms/bloomsbury_digital/images/bloomsbury-wallpaper.jpg");
   background-size: 100% auto;
-  height: 100vh;
+  height: auto;
+  min-height: 100%;
   width: 100%;
   // overflow: scroll;
   // -webkit-overflow-scrolling: touch;
@@ -403,14 +410,6 @@ $header-font: "AW Conqueror Didot Light";
   width: 19%;
   float: left;
 }
-
-@media (min-width: 768px) {
-  .bloomsbury-shop__products-item:not(.slick-slide) {
-    float: none;
-    max-width: 240px;
-  }
-}
-
 .bloomsbury-shop__products img {
   display: block;
   margin: auto;

@@ -18,7 +18,9 @@ var Drupal = {
       var $singlePages = $('.js-bloomsbury-shop-page', $module);
 
       var slickSettings = {
-        speed: animationTime
+        speed: animationTime,
+        fade: true,
+        cssEase: 'linear'
       };
 
       function updateResponsive() {
@@ -37,15 +39,15 @@ var Drupal = {
 
       var routeActions = {
         init: function(cb) {
-          $landing.fadeOut(animationTime, function() {
+          $landing.stop(true, true).fadeOut(animationTime, function() {
             $module.removeClass('landing');
-            $pages.fadeOut(animationTime, function() {
+            $pages.stop(true, true).fadeOut(animationTime, function() {
               $singlePages.hide();
               $singlePages.filter('[data-key="'+ router.getRoute() +'"]').show();
               $nav.find('a').removeClass('active');
               $nav.find('a[data-key="'+ router.getRoute()[0] +'"]').addClass('active');
               setTimeout(function() {
-                $pages.fadeIn(animationTime);
+                $pages.stop(true, true).fadeIn(animationTime);
                 if (cb) {
                   cb();
                 }
@@ -88,7 +90,7 @@ var Drupal = {
         if (index < 0) {
           index = 0;
         }
-        $('.bloomsbury-shop__products-item:not(:eq('+index+'))', $module).fadeOut(animationTime, function() {
+        $('.bloomsbury-shop__products-item:not(:eq('+index+'))', $module).stop(true, true).fadeOut(animationTime, function() {
           transitionToScent(index);
         });
       });
@@ -103,9 +105,9 @@ var Drupal = {
               var nextClass = $scentsCarousel.find('.slick-slide:not(.slick-cloned)').eq(nextSlide).data('theme');
               $scentsCarousel.removeClass(currentClass).addClass(nextClass);
             });
-            $('.bloomsbury-shop__products-item', $module).fadeIn(animationTime, function() {
+            $('.bloomsbury-shop__products-item', $module).stop(true, true).fadeIn(animationTime, function() {
               $module.find('.bloomsbury-shop__page--scents .js-bloomsbury-slider').slick('slickGoTo', index, true);
-              $('.bloomsbury-shop__page--scents', $module).fadeIn(animationTime);
+              $('.bloomsbury-shop__page--scents', $module).stop(true, true).fadeIn(animationTime);
             });
           // }, 1);
         });

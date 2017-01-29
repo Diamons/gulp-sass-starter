@@ -23,7 +23,10 @@ gulp.task('browser-sync', function() {
 // Styles
 gulp.task('styles', function() {
   return gulp.src(appDefaults.stylesDir+'**/*.scss')
-    .pipe(sass({ style: 'compressed'  }))
+    .pipe(sass({
+      style: 'compressed',
+      includePaths: ['./bower_components/breakpoint-sass/stylesheets'],
+    }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest(appDefaults.stylesDir))
     .pipe(rename({ suffix: '.min' }))
