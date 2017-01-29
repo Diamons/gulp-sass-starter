@@ -17,6 +17,10 @@ html,body {
 
 $tablet: 768px;
 $large: 1280px;
+// $extra-large: 1920px;
+
+// $large: (min-width 1024px);
+$extra-large: 1600px;
 // END TODO
 
 @font-face {
@@ -619,19 +623,19 @@ $header-font: "AW Conqueror Didot Light";
 .bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__products-name,
 .bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__products-description,
 .bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__products-price {
-  color: #746b5d;
+  color: #a39682;
 }
 
 .bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__button {
   font-weight: 300;
   background: transparent;
-  border: 1px solid #746b5d;
-  color: #746b5d;
+  border: 1px solid #a39682;
+  color: #a39682;
 }
 
 .bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__button:hover,
 .bloomsbury-shop .theme--leather-artemisia .bloomsbury-shop__button.bloomsbury-shop__button--add-bag {
-  background: #746b5d;
+  background: #a39682;
   color: #FFFFFF;
 }
 

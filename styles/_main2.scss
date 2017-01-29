@@ -16,7 +16,7 @@
   background-position: center center;
   background-size: cover;
   min-height: 480px;
-
+  transition: all .3s;
   .slick-next,
   .slick-prev {
     width: auto;
@@ -66,6 +66,13 @@
       background-size: 1920px auto;
       background-position: -320px -42px;
     }
+    @include breakpoint(1600px) {
+      background-position: 0 0;
+      background-size: cover;
+    }
+    @include breakpoint($extra-large) {
+      height: 1000px;
+    }
     .bloomsbury-shop__nav {
       opacity: 0;
     }
@@ -79,6 +86,9 @@
     opacity: 1;
     padding: 13px 0 18px;
     transition: all .3s;
+    @include breakpoint($extra-large) {
+      padding: 18px;
+    }
     a {
       padding: 0 18px;
       font-size: 13px;
@@ -87,6 +97,10 @@
         font-size: 18px;
         display: inline-block;
         margin-top: 2px;
+      }
+      @include breakpoint($extra-large) {
+        font-size: 24px;
+        padding: 0 71px;
       }
     }
   }
@@ -107,12 +121,23 @@
     @include breakpoint($large) {
       margin-top: 90px;
     }
+    @include breakpoint($extra-large) {
+      margin-top: 150px;
+    }
   }
   .bloomsbury-shop__content-wrap {
     padding: 1px 49px 20px;
 
     @include breakpoint($tablet) {
       padding: 2px 56px 40px;
+    }
+    @include breakpoint($large) {
+      padding: 4px 60px 40px
+    }
+    @include breakpoint($extra-large) {
+      padding: 4px 0 40px;
+      width: 389px;
+      margin-left: -10px;
     }
   }
 
@@ -122,6 +147,7 @@
     margin-bottom: 12px;
     line-height: 26px;
     letter-spacing: -1px;
+    text-align: center;
     @include breakpoint($tablet) {
       font-size: 37px;
       line-height: 36px;
@@ -136,6 +162,9 @@
       padding: 8px 37px;
       margin-top: 8px;
       font-size: 12px;
+    }
+    @include breakpoint($large) {
+      letter-spacing: 1px;
     }
   }
 }
@@ -160,6 +189,10 @@
       max-width: 500px;
       padding-bottom: 100px;
     }
+    @include breakpoint($extra-large) {
+      max-width: 820px;
+      padding-bottom: 150px;
+    }
   }
   .bloomsbury-shop__button--inspiration {
     padding: 8px 10px;
@@ -178,7 +211,12 @@
       padding-top: 0;
       line-height: 18px;
     }
-
+    @include breakpoint($extra-large) {
+      font-size: 16px;
+      max-width: 100%;
+      line-height: 1.5em;
+      margin-bottom: 5px;
+    }
   }
   .bloomsbury-shop__content-title {
     font-size: 21px;
@@ -197,6 +235,10 @@
       font-size: 31px;
       padding-top: 76px;
     }
+    @include breakpoint($extra-large) {
+      padding-top: 140px;
+      font-size: 50px;
+    }
   }
   .bloomsbury-shop__button {
     width: 160px;
@@ -206,7 +248,10 @@
     border: 1px solid #385688;
   }
   .bloomsbury-shop__button--inspiration {
-    margin-bottom: 55px;
+    margin-bottom: 65px;
+    @include breakpoint($tablet) {
+      margin-bottom: 55px;
+    }
   }
   .bloomsbury-shop__button--scents,
   .bloomsbury-shop__button--inspiration {
@@ -223,6 +268,12 @@
       font-size: 10px;
       margin-bottom: 4px;
     }
+    @include breakpoint($extra-large) {
+      width: 200px;
+      font-size: 17px;
+      padding: 9px 0;
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -234,13 +285,12 @@
     margin: auto;
     margin-top: -10px;
     @include breakpoint($tablet) {
-      width: 100%;
-      position: static;
+      width: 768px;
     }
   }
   .slick-prev {
     top: 145px;
-    left: 32px;
+    left: 11%;
     @include breakpoint($tablet) {
       top: 50%;
       left: 0;
@@ -250,9 +300,15 @@
       left: 222px;
       margin-top: -5px;
     }
+    @include breakpoint($extra-large) {
+      left: 298px;
+      &:before {
+        font-size: 78px;
+      }
+    }
   }
   .slick-next {
-    right: 27px;
+    right: 10%;
     top: 174px;
     @include breakpoint($tablet) {
       top: 50%;
@@ -262,6 +318,12 @@
     @include breakpoint($large) {
       right: 222px;
       margin-top: -5px;
+    }
+    @include breakpoint($extra-large) {
+      right: 301px;
+      &:before {
+        font-size: 78px;
+      }
     }
   }
   .bloomsbury-shop__products {
@@ -287,9 +349,20 @@
         margin-right: 0;
       }
     }
+    @include breakpoint($extra-large) {
+      padding: 158px 0 0;
+      width: 180px;
+      margin-right: 28px;
+    }
     img {
       @include breakpoint($tablet) {
         width: 80px;
+      }
+      @include breakpoint($extra-large) {
+        width: 130px;
+      }
+      @include breakpoint($extra-large) {
+        width: 110px;
       }
     }
     .bloomsbury-shop__products-title {
@@ -304,6 +377,11 @@
       @include breakpoint($large) {
         margin: 45px auto 12px;
       }
+      @include breakpoint($extra-large) {
+        margin-top: 58px;
+        font-size: 22px;
+        margin-bottom: 28px;
+      }
     }
     .bloomsbury-shop__button {
       width: 130px;
@@ -313,6 +391,11 @@
       font-size: 12px;
       @include breakpoint($tablet) {
         padding: 6px 10px;
+      }
+      @include breakpoint($extra-large) {
+        padding: 9px 0;
+        width: 175px;
+        font-size: 17px;
       }
     }
   }
@@ -350,6 +433,10 @@
       @include breakpoint($large) {
         max-width: 50px;
       }
+      @include breakpoint($extra-large) {
+        max-width: none;
+        width: 80px;
+      }
     }
 
     .bloomsbury-shop__products-item {
@@ -375,6 +462,12 @@
         width: 500px;
         height: 550px;
       }
+
+      @include breakpoint($extra-large) {
+        width: 810px;
+        height: 920px;
+        padding: 118px 60px 80px;
+      }
     }
     .bloomsbury-shop__products-name {
       font-size: 22px;
@@ -398,6 +491,10 @@
         letter-spacing: 4px;
         margin-bottom: 5px;
       }
+      @include breakpoint($extra-large) {
+        font-size: 52px;
+        max-width: 60%;
+      }
     }
 
     .bloomsbury-shop__products-description {
@@ -417,6 +514,11 @@
         font-size: 11px;
         max-width: 90%;
       }
+      @include breakpoint($extra-large) {
+        font-size: 16px;
+        max-width: 75%;
+        margin-top: 17px;
+      }
     }
     .bloomsbury-shop__products-price {
       @include breakpoint($tablet) {
@@ -427,6 +529,11 @@
       @include breakpoint($large) {
         line-height: 1;
         font-size: 11px;
+      }
+      @include breakpoint($extra-large) {
+        font-size: 16px;
+        margin-top: 30px;
+        margin-bottom: 26px;
       }
     }
     .bloomsbury-shop__button.bloomsbury-shop__button--add-bag {
@@ -443,6 +550,12 @@
         padding: 4px 0 5px;
         font-size: 11px;
         margin-top: 2px;
+      }
+
+      @include breakpoint($extra-large) {
+        width: 200px;
+        padding: 10px 0;
+        font-size: 16px;
       }
     }
   }
@@ -500,6 +613,10 @@
       @include breakpoint($large) {
         width: 495px;
       }
+      @include breakpoint($extra-large) {
+        width: 100%;
+        margin-top: 10px;
+      }
     }
   }
   .slick-next,
@@ -515,6 +632,13 @@
       left: 75px;
       margin-top: -5px;
     }
+    @include breakpoint($extra-large) {
+      left: -120px;
+      margin-top: 8px;
+      &:before {
+        font-size: 78px;
+      }
+    }
   }
   .slick-next {
     right: 0;
@@ -525,6 +649,13 @@
     @include breakpoint($large) {
       right: 76px;
       margin-top: -5px;
+    }
+    @include breakpoint($extra-large) {
+      right: -114px;
+      margin-top: 8px;
+      &:before {
+        font-size: 78px;
+      }
     }
   }
 }
